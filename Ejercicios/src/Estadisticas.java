@@ -1,7 +1,7 @@
 public interface Estadisticas {
-        double minimo(double[] num);
-        double maximo(double[] num);
-        double sumatorio(double[] num);
+        double minimo(double[] n);
+        double maximo(double[] n);
+        double sumatorio(double[] n);
 
 }
 

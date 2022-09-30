@@ -6,7 +6,7 @@
 //double sumatorio();
 //}
 
-import java.util.Arrays;
+
 import java.util.Random;
 import java.util.Scanner;
 public class Ejercicio1 {
@@ -15,8 +15,8 @@ public class Ejercicio1 {
         Scanner sc = new Scanner(System.in);
         ArrayReales cadena =new ArrayReales();
         System.out.print("¿Cuántos números quieres comparar?");
-        int var = sc.nextInt();
         System.out.println();
+        int var = sc.nextInt();
         double[] num=new double[var];
         System.out.print("Se van a generar números aleatorios. ¿Cuál será el valor máximo posible?");
         System.out.println();
@@ -24,21 +24,23 @@ public class Ejercicio1 {
 
         System.out.print("Listado de números: ");
         Random r1=new Random(num.length);
-        for (double v : num) {
+        for (int i=0;i<num.length;i++) {
             double n1= r1.nextDouble(m);
-            Arrays.fill(num, n1);
-            System.out.print(Math.round (v) + ", ");
-        }
+            num[i]=n1;
+            System.out.print(Math.round (num[i]) + ", ");
+            }
         System.out.println();
         System.out.print("Mínimo: ");
         double min = cadena.minimo(num);
-        System.out.print(min + "/n");
+        System.out.print(Math.round(min));
+        System.out.println();
         System.out.print("Máximo: ");
         double max = cadena.maximo(num);
-        System.out.print(max + "/n");
+        System.out.print(Math.round(max));
+        System.out.println();
         System.out.print("Sumatorio: ");
-        double sum = cadena.maximo(num);
-        System.out.print(sum);
+        double sum = cadena.sumatorio(num);
+        System.out.print(Math.round(sum));
     }
 }
 class ArrayReales  implements Estadisticas {
@@ -47,9 +49,9 @@ class ArrayReales  implements Estadisticas {
     @Override
     public double minimo (double[] n) {
         double min=n[0];
-        for (double v : n) {
-            if (min < v)
-                min = v;
+        for (int i=0;i<n.length;i++) {
+            if (n[i]<= min)
+                min = n[i];
         }
         return min;
     }
@@ -57,18 +59,19 @@ class ArrayReales  implements Estadisticas {
     @Override
     public double maximo(double[] n) {
         double max=n[0];
-        for (double v : n) {
-            if (max > v)
-                max = v;
+        for (int i=0;i<n.length;i++) {
+            if (max < n[i])
+                max = n[i];
+
         }
         return max;
     }
 
     @Override
     public double sumatorio(double[] n) {
-        double sum=n[0];
-        for (double v : n) {
-                sum = sum + v;
+        double sum=0;
+        for (int i=0;i<n.length;i++) {
+                sum = sum+n[i];
         }
         return sum;
     }
